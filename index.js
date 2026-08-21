@@ -4,11 +4,19 @@ import cors from "cors"
 
 const app = express()
 
-app.get("/", (request, response) => {
-    response.json({
-        message:"API de Filmes funcionando!"
+app.get("/movies", (request, response) => {
+    const selectCommand = "SELECT * FROM filmes_RomuloFabricio"
+
+    sql.query(selectCommand, (error, data) => {
+        if(error) {
+            console.log(error)
+            return
+        }
+
+        response.json(data)
     })
 })
+
 
 app.listen(3067,()=>{
     console.log("Servidor rodando na porta 3067")
@@ -52,19 +60,6 @@ app.delete("/movies/:id", (request, response) => {
 
 app.use(cors())
 app.use(express.json())
-
-app.get("/movies", (request, response) => {
-    const selectCommand = "SELECT * FROM filmes_RomuloFabricio"
-
-    sql.query(selectCommand, (error, data) => {
-        if(error) {
-            console.log(error)
-            return
-        }
-
-        response.json(data)
-    })
-})
 
 const sql = mysql2.createPool({
     host: "benserverplex.ddns.net",
