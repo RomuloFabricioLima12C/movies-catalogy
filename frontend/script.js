@@ -1,6 +1,6 @@
 async function buscarFilmes() {
 
-    const resposta = await fetch("http://localhost:3067/movies")
+    const resposta = await fetch("http://localhost:3067/")
     const filmes = await resposta.json()
     const sectionFilmes = document.querySelector(".filmes")
 
