@@ -23,7 +23,7 @@ app.get("/", (request, response) => {
     sql.query(selectCommand, (error, data) => {
         if (error) {
             console.log(error)
-            return response.status(500).json({ error: "Erro ao buscar filmes" })
+            return
         }
 
         response.json(data)
