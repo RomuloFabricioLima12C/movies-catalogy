@@ -11,13 +11,13 @@ app.use(express.json())
 
 const sql = mysql2.createPool({
     host: "benserverplex.ddns.net",
-    user: "aluno_projetos",
-    password: "aluno@projeto",
+    user: "alunos",
+    password: "senhaAlunos",
     database: "alunos_filmes03TB"
 })
 
 
-app.get("/", (request, response) => {
+app.get("", (request, response) => {
     const selectCommand = "SELECT * FROM filmes_RomuloFabricio"
 
     sql.query(selectCommand, (error, data) => {
